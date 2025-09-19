@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="TraficLight.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:m="clr-namespace:TraficLight.Models"
+    xmlns:vm="clr-namespace:TraficLight.ViewModels"
+    x:DataType="vm:MainPageVM">
+    <Grid
+        ColumnDefinitions="*,*"
+        RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,*"
+        RowSpacing="5">
+        <Frame Grid.ColumnSpan="2">
+            <BoxView BackgroundColor="{Binding RedColor}" />
+        </Frame>
+        <Frame Grid.Row="1" Grid.ColumnSpan="2">
+            <BoxView BackgroundColor="{Binding YellowColor}" />
+        </Frame>
+        <Frame Grid.Row="2" Grid.ColumnSpan="2">
+            <BoxView BackgroundColor="{Binding GreenColor}" />
+        </Frame>
+        <Button
+            Grid.Row="3"
+            Grid.ColumnSpan="2"
+            Command="{Binding ChangeLightCommand}"
+            Text="{x:Static m:Strings.ChangeLightText}" />
+        <Button
+            Grid.Row="4"
+            Grid.Column="1"
+            Command="{Binding ChangeSwitchTime}"
+            Text="{x:Static m:Strings.SubmitText}" />
+        <Entry
+            Grid.Row="4"
+            FontSize="30"
+            HorizontalOptions="Center"
+            HorizontalTextAlignment="Center"
+            Keyboard="Numeric"
+            Placeholder="{x:Static m:Strings.TimerElapsedTimeText}"
+            Pla
+            Text="{Binding SwitchTimeSeconds}"
+            VerticalOptions="Center" />
+
+        <Button
+            Grid.Row="5"
+            Grid.ColumnSpan="2"
+            Command="{Binding SwitchAutoChangeCommand}"
+            Text="{Binding SwitchAutoChangeLightText}" />
+        <Image
+            Grid.Row="6"
+            Grid.Column="1"
+            HorizontalOptions="Center"
+            Source="{Binding LightImage}"
+            VerticalOptions="Center" />
+        <Label
+            Grid.Row="6"
+            FontSize="40"
+            HorizontalOptions="Center"
+            Text="{Binding LightText}"
+            TextColor="{Binding LightTextColor}"
+            VerticalOptions="Center" />
+    </Grid>
+</ContentPage>
